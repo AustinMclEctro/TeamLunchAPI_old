@@ -10,6 +10,8 @@ public class Restaurant
     public int totalMeals;
     public Dictionary<char, int> specialMeals = new Dictionary<char, int>();
 
+    public Restaurant() { }
+
     public Restaurant(string n, int r, int t, Dictionary<char, int> s)
     {
         name = n;

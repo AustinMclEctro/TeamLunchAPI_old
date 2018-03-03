@@ -15,7 +15,7 @@ namespace TeamLunchAPI.Controllers
         // GET request to return all team members.
         // No headers needed.
         [HttpGet]
-        public Dictionary<string, string> GetAllTeamMembers()
+        public Dictionary<string, string> GetAll()
         {
             return Data.Instance.TeamMembers;
         }
@@ -47,6 +47,7 @@ namespace TeamLunchAPI.Controllers
         }
 
         // PUT request to edit an existing team member.
+        // Team member id cannot be edited (create new team member with different id).
         [HttpPut]
         [Route("/TeamMember/Edit")]
         public IActionResult Edit([FromHeader] string id, [FromHeader] string restrictions)
@@ -64,7 +65,7 @@ namespace TeamLunchAPI.Controllers
         // DELETE request to delete an existing team member.
         [HttpDelete]
         [Route("/TeamMember/Delete")]
-        public IActionResult DeleteTeamMember([FromHeader] string id)
+        public IActionResult Delete([FromHeader] string id)
         {
             if (Data.Instance.TeamMembers.ContainsKey(id))
             {

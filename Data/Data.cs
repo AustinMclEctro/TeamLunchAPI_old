@@ -22,6 +22,21 @@ public sealed class Data
     /// </summary>
     public List<Restaurant> Restaurants = new List<Restaurant>();
 
+    /// <summary>
+    /// Returns instance of restaurant with given name.
+    /// Returns null if none is found.
+    /// </summary>
+    /// <returns></returns>
+    public Restaurant GetRestaurant(string name)
+    {
+        foreach (Restaurant r in Restaurants)
+        {
+            if (r.name == name)
+                return r;
+        }
+        return null;
+    }
+
     private static Data instance = new Data();
 
     static Data()
