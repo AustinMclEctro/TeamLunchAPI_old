@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace TeamLunchAPI.Controllers
 {
@@ -11,36 +12,71 @@ namespace TeamLunchAPI.Controllers
     [Route("/TeamMember")]
     public class TeamMemberController : Controller
     {
-        // GET: api/TeamMember
+        // GET: /TeamMember
+        // Does not use any headers.
         [HttpGet]
-        public IEnumerable<string> Get()
+        public Dictionary<int, string> GetAllTeamMembers()
         {
-            return new string[] { "value1", "value2" };
+            //return new string[] { "default", "get" };
+            return Data.Instance.TeamMembers;
         }
 
-        // GET: api/TeamMember/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // Uses headers to retrieve individual team member.
+        [HttpGet]
+        [Route("/TeamMember/Get")]
+        public KeyValuePair<int, string> Get([FromHeader] int id)
         {
-            return "value";
+            if (Data.Instance.TeamMembers.ContainsKey(id))
+                return new KeyValuePair<int, string>(id, Data.Instance.TeamMembers[id]);
+            else
+                return new KeyValuePair<int, string>();
         }
-        
-        // POST: api/TeamMember
+
         [HttpPost]
-        public void Post([FromBody]string value)
+        [Route("/TeamMember/Add")]
+        public IActionResult Add([FromHeader] int id, [FromHeader] string restrictions)
         {
+            if (!Data.Instance.TeamMembers.ContainsKey(id))
+            {
+                if (restrictions == null) restrictions = "";
+                Data.Instance.TeamMembers.Add(id, restrictions);
+                return Ok();
+            }
+            else
+                return BadRequest();
         }
-        
-        // PUT: api/TeamMember/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+
+        //// GET: /TeamMember/5
+        //[HttpGet("{id}", Name = "Get")]
+        //public string[] Get(int id)
+        //{
+        //    return new string[] { "value" };
+        //}
+
+        //// POST: /TeamMember
+        //[HttpPost]
+        //public void Post([FromBody]string value)
+        //{
+        //}
+
+        //// PUT: /TeamMember/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
+
+        // DELETE: /TeamMember/Delete
+        [HttpDelete]
+        [Route("/TeamMember/Delete")]
+        public IActionResult DeleteTeamMember([FromHeader] int id)
         {
-        }
-        
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if (Data.Instance.TeamMembers.ContainsKey(id))
+            {
+                Data.Instance.TeamMembers.Remove(id);
+                return Ok();
+            }
+            else
+                return BadRequest("Could not remove");
         }
     }
 }

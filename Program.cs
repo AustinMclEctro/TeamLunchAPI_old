@@ -19,7 +19,7 @@ namespace TeamLunchAPI
                 .UseApplicationInsights()
                 .Build();
 
-            host.Run();
+           host.Run();
         }
     }
 }
