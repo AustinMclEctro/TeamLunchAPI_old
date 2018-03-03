@@ -15,7 +15,7 @@ public sealed class Data
     /// The dietary restrictions string is a character sequence describing restrictions.
     /// Largest possible string: "vgnf" - vegitarian, gluten-free, nut-free, fish-free.
     /// </summary>
-    public Dictionary<int, string> TeamMembers = new Dictionary<int, string>();
+    public Dictionary<string, string> TeamMembers = new Dictionary<string, string>();
 
     /// <summary>
     /// List of restaurants.
