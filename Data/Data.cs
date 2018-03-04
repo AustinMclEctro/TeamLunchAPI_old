@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 /// <summary>
 /// Singleton class which holds all submitted TeamMembers and Restaurants.
 /// </summary>
@@ -26,7 +27,6 @@ public sealed class Data
     /// Returns instance of restaurant with given name.
     /// Returns null if none is found.
     /// </summary>
-    /// <returns></returns>
     public Restaurant GetRestaurant(string name)
     {
         foreach (Restaurant r in Restaurants)

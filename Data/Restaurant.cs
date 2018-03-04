@@ -8,11 +8,11 @@ public class Restaurant
     public string name;
     public int rating;
     public int totalMeals;
-    public Dictionary<char, int> specialMeals = new Dictionary<char, int>();
+    public Dictionary<string, int> specialMeals = new Dictionary<string, int>();
 
     public Restaurant() { }
 
-    public Restaurant(string n, int r, int t, Dictionary<char, int> s)
+    public Restaurant(string n, int r, int t, Dictionary<string, int> s)
     {
         name = n;
         rating = r;

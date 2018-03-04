@@ -43,13 +43,14 @@ namespace TeamLunchAPI.Controllers
                 Restaurant newR = new Restaurant();
                 // If each numerical property can be parsed correctly, set it.
                 // Else, set it to an arbitrary error marker (i.e. -1).
+                newR.name = name;
                 int.TryParse(rating, out int ratingInt);
                 newR.rating = (ratingInt <= 5 && ratingInt >= 0) ? ratingInt : -1;  // Ratings must be inclusively between 0 and 5
                 newR.totalMeals = (int.TryParse(totalMeals, out int totalMealsInt)) ? totalMealsInt : -1;
-                newR.specialMeals['v'] = (int.TryParse(numV, out int numVInt)) ? numVInt : -1;
-                newR.specialMeals['g'] = (int.TryParse(numG, out int numGInt)) ? numGInt : -1;
-                newR.specialMeals['n'] = (int.TryParse(numN, out int numNInt)) ? numNInt : -1;
-                newR.specialMeals['f'] = (int.TryParse(numF, out int numFInt)) ? numFInt : -1;
+                newR.specialMeals["v"] = (int.TryParse(numV, out int numVInt)) ? numVInt : -1;
+                newR.specialMeals["g"] = (int.TryParse(numG, out int numGInt)) ? numGInt : -1;
+                newR.specialMeals["n"] = (int.TryParse(numN, out int numNInt)) ? numNInt : -1;
+                newR.specialMeals["f"] = (int.TryParse(numF, out int numFInt)) ? numFInt : -1;
 
                 Data.Instance.Restaurants.Add(newR);
                 return Ok();
@@ -78,10 +79,10 @@ namespace TeamLunchAPI.Controllers
                 int.TryParse(rating, out int ratingInt);
                 r.rating = (ratingInt <= 5 && ratingInt >= 0) ? ratingInt : -1;  // Ratings must be inclusively between 0 and 5
                 r.totalMeals = (int.TryParse(totalMeals, out int totalMealsInt)) ? totalMealsInt : -1;
-                r.specialMeals['v'] = (int.TryParse(numV, out int numVInt)) ? numVInt : -1;
-                r.specialMeals['g'] = (int.TryParse(numG, out int numGInt)) ? numGInt : -1;
-                r.specialMeals['n'] = (int.TryParse(numN, out int numNInt)) ? numNInt : -1;
-                r.specialMeals['f'] = (int.TryParse(numF, out int numFInt)) ? numFInt : -1;
+                r.specialMeals["v"] = (int.TryParse(numV, out int numVInt)) ? numVInt : -1;
+                r.specialMeals["g"] = (int.TryParse(numG, out int numGInt)) ? numGInt : -1;
+                r.specialMeals["n"] = (int.TryParse(numN, out int numNInt)) ? numNInt : -1;
+                r.specialMeals["f"] = (int.TryParse(numF, out int numFInt)) ? numFInt : -1;
 
                 return Ok();
             }
