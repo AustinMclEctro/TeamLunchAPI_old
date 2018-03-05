@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>How to use TeamLunchAPI</h2><br />
+        <p>This API is meant to be used with some kind of client program to send HTTP requests.</p>
+        <p>I used <a href="https://www.getpostman.com/">Postman</a></p>
+        <h4>Team Members</h4>
+        <ul>
+            <li>GET /TeamMember &emsp; - &emsp; Returns all team members.</li>
+            <br />
+
+            <li>GET /TeamMember/Get &emsp; - &emsp; Returns specific team member via header parameter:</li>
+            <ul>
+                <li>"id" - the team member's id.</li>
+            </ul>
+            <br />
+
+            <li>POST /TeamMember/Add &emsp; - &emsp; Add a new team member. Uses header parameters:</li>
+            <ul>
+                <li>"id" - the team member's id.</li>
+                <li>"restrictions" - use one of either v, g, n, or f.</li>
+            </ul>
+            <br />
+
+            <li>PUT /TeamMember/Edit &emsp; - &emsp; Overwrite an existing team member. Uses same header parameters as /TeamMember/Add.</li>
+            <br />
+
+            <li>DELETE /TeamMember/Delete &emsp; - &emsp; Remove a specific team member via header parameter:</li>
+            <ul>
+                <li>"id" - the team member's id.</li>
+            </ul>
+            <br /><br />
+        </ul>
+
+        <h4>Restaurants</h4>
+        <ul>
+            <li>GET /Restaurant &emsp; - &emsp; Returns all restaurants.</li>
+            <br />
+
+            <li>GET /Restaurant/Get &emsp; - &emsp; Returns specific restaurant via header parameter:</li>
+            <ul>
+                <li>"name" - the name of the restaurant.</li>
+            </ul>
+            <br />
+
+            <li>POST /Restaurant/Add &emsp; - &emsp; Add a new restaurant. Uses header parameters:</li>
+            <ul>
+                <li>"name" - the name of the restaurant.</li>
+                <li>"rating" - use a number between 0 and 5, inclusive.</li>
+                <li>"totalMeals" - total number of meals the restaurant can provide.</li>
+                <li>"numV" - number of <b>vegetarian</b> meals the restaurant can provide.</li>
+                <li>"numG" - number of <b>gluten-free</b> meals the restaurant can provide.</li>
+                <li>"numN" - number of <b>nut-free</b> meals the restaurant can provide.</li>
+                <li>"numF" - number of <b>fish-free</b> meals the restaurant can provide.</li>
+            </ul>
+            <br />
+
+            <li>PUT /Restaurant/Edit &emsp; - &emsp; Overwrite an existing restaurant. Uses same header parameters as /Restaurant/Add.</li>
+            <br />
+
+            <li>DELETE /Restaurant/Delete &emsp; - &emsp; Remove a specific restaurant via header parameter:</li>
+            <ul>
+                <li>"name" - the name of the restaurant.</li>
+            </ul>
+            <br /><br />
+        </ul>
+
+        <h4>List of Optimal Meals</h4>
+        <ul>
+            <li>GET /Meals &emsp; - &emsp; Returns the best possible meal order.</li>
+            <br />
+        </ul>
+    </div>
+</div>
